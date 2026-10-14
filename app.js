@@ -26,5 +26,20 @@ function gameDisplay(){
     gamePage.style.display = 'flex'
 }
 
+function keyClick(event){
+    const key = event.target.textContent
+
+    if(key === 'Enter'){
+        enterGuess()
+    }
+    else if(key === '⌫'){
+        deleteLetter()
+    }
+    else{
+        addLetter(key)
+    }
+}
+
 init()
 playBtn.addEventListener('click', gameDisplay)
+keyboardElement.addEventListener('click', keyClick)
