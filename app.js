@@ -40,6 +40,12 @@ function keyClick(event){
     }
 }
 
+function addLetter(letter){
+    if(currentGuess <5 && !gameOver){
+        currentGuess = currentGuess + letter
+    }
+}
+
 init()
 playBtn.addEventListener('click', gameDisplay)
 keyboardElement.addEventListener('click', keyClick)
