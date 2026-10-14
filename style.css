@@ -1,21 +1,18 @@
 body{
     background-color: rgb(221, 214, 197);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    padding: 0;
 }
 
 #home-page{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     margin: 200px;
 }
 
-
+header{
+    margin-top: -200px;
+}
 
 h1{
     text-align: center;
@@ -27,13 +24,26 @@ h2{
 }
 
 #play-btn{
-    align-self: center;
+    align-items: center;
     width: 70px;
     height: 25px;
     cursor: pointer;
     border-radius: 4px;
     background-color: rgb(255, 247, 229);
     border: 2px solid rgb(86, 79, 61);
+}
+
+#play-btn:hover{
+    background-color: rgb(255, 240, 221);
+}
+
+#game-page{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 200px;
 }
 
 #guesses{
@@ -98,6 +108,11 @@ h2{
     background-color: rgb(113, 113, 113);
     color: white;
     border: 2px solid white;
+    cursor: pointer;
+}
+
+.key:hover{
+    background-color: rgb(100, 100, 100);
 }
 
 #restart{
@@ -109,4 +124,8 @@ h2{
     background-color: rgb(255, 247, 229);
     border: 2px solid rgb(86, 79, 61);
     margin: 15px;
+}
+
+#restart:hover{
+    background-color: rgb(255, 240, 221);
 }
