@@ -98,8 +98,8 @@ h2{
 }
 
 .key{
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     font-size: 25px;
     display: flex;
     align-items: center;
@@ -118,12 +118,12 @@ h2{
 #restart{
     align-self: center;
     width: 70px;
-    height: 30px;
+    height: 40px;
     cursor: pointer;
     border-radius: 4px;
     background-color: rgb(255, 247, 229);
     border: 2px solid rgb(86, 79, 61);
-    margin: 15px;
+    margin: 6px;
 }
 
 #restart:hover{
@@ -131,8 +131,8 @@ h2{
 }
 
 #enter-btn{
-    width: 100px;
-    height: 50px;
+    width: 80px;
+    height: 40px;
     font-size: 25px;
     display: flex;
     align-items: center;
@@ -149,8 +149,8 @@ h2{
 }
 
 #delete-btn{
-    width: 60px;
-    height: 50px;
+    width: 50px;
+    height: 40px;
     font-size: 25px;
     display: flex;
     align-items: center;

@@ -41,8 +41,14 @@ function keyClick(event){
 }
 
 function addLetter(letter){
-    if(currentGuess <5 && !gameOver){
+    if(currentGuess < 5 && !gameOver){
         currentGuess = currentGuess + letter
+    }
+}
+
+function deleteLetter(){
+    if(currentGuess.length > 0 && !gameOver){
+        currentGuess = currentGuess.slice(0, 1)
     }
 }
 
