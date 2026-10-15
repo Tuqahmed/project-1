@@ -29,11 +29,13 @@ function gameDisplay(){
     guesses = []
     messageElement.textContent = ''
     
+    console.log(word)
 }
 
 function keyClick(event){
 
     const key = event.target.textContent
+    console.log(key)
 
     if(key === 'Enter'){
         enterGuess()
@@ -49,16 +51,19 @@ function keyClick(event){
 function addLetter(letter){
     if(currentGuess.length < 5 && !gameOver){
         currentGuess = currentGuess + letter
+        console.log(currentGuess)
     }
 }
 
 function deleteLetter(){
     if(currentGuess.length > 0 && !gameOver){
         currentGuess = currentGuess.slice(0, -1)
+                console.log(currentGuess)
     }
 }
 
 function enterGuess(){
+    console.log(currentGuess)
     if(gameOver){
         return
     }
@@ -71,6 +76,8 @@ function enterGuess(){
     const guess = currentGuess
     guesses.push(guess)
     messageElement.textContent = ''
+    console.log(guess)
+    updateKeyboard(guess, checkGuess(guess))
 
     if(guess === word){
         messageElement.textContent = 'You Won!'
@@ -80,6 +87,7 @@ function enterGuess(){
 
     currentAttempt++
     currentGuess = ''
+    console.log(currentAttempt)
 
     if(currentAttempt === 6){
         messageElement.textContent = `Game over! The word was ${word}`
@@ -110,7 +118,32 @@ function checkGuess(guess){
             remaining[index] = null
         }
     }
+    console.log(guess, word, result)
     return result
+}
+
+function updateKeyboard(guess, result){
+    console.log(guess)
+    for(let i=0; i<5; i++){
+        const keyEl = [...keyElements].find((k) => {
+            k.textContent === guess[i]
+        })
+
+        if(!keyEl){
+            continue
+        }
+
+        if(keyEl.classList.contains('green')){
+            continue
+        }
+
+        if(keyEl.classList.contains('yellow') && result[i] === 'gray'){
+            continue
+        }
+
+        keyEl.classList.remove('yellow', 'gray')
+        keyEl.classList.add(result[i])
+    }
 }
 
 init()
