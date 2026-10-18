@@ -6,7 +6,7 @@ const keyboardElement = document.querySelector('#keyboard')
 const keyElements = document.querySelectorAll('.key')
 const messageElement = document.querySelector('#message')
 
-const words = ['CLOCK', 'PAPER', 'BROWN', 'APPLE', 'BRAIN']
+const words = ['CLOCK', 'PAPER', 'BROWN', 'APPLE', 'BRAIN', 'CLOUD', 'BEACH', 'PLANE', 'WATER', 'HONEY', 'MONEY']
 let word
 let currentAttempt
 let currentGuess = ''
@@ -28,14 +28,15 @@ function gameDisplay(){
     gameOver = false
     guesses = []
     messageElement.textContent = ''
-    
-    console.log(word)
 }
 
 function keyClick(event){
 
+    if(!event.target.classList.contains('key') && event.target.tagName !== 'BUTTON'){
+        return
+    }
+
     const key = event.target.textContent
-    console.log(key)
 
     if(key === 'Enter'){
         enterGuess()
@@ -149,4 +150,3 @@ function updateKeyboard(guess, result){
 init()
 playBtn.addEventListener('click', gameDisplay)
 keyboardElement.addEventListener('click', keyClick)
-
