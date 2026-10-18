@@ -5,6 +5,7 @@ const boardElement = document.querySelector('#guesses')
 const keyboardElement = document.querySelector('#keyboard')
 const keyElements = document.querySelectorAll('.key')
 const messageElement = document.querySelector('#message')
+const restartBtn = document.querySelector('#restart')
 
 const words = ['CLOCK', 'PAPER', 'BROWN', 'APPLE', 'BRAIN', 'CLOUD', 'BEACH', 'PLANE', 'WATER', 'HONEY', 'MONEY']
 let word
@@ -148,3 +149,4 @@ function updateKeyboard(guess, result){
 init()
 playBtn.addEventListener('click', gameDisplay)
 keyboardElement.addEventListener('click', keyClick)
+restartBtn.addEventListener('click', gameDisplay)
