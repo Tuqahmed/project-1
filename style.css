@@ -20,7 +20,7 @@ header {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 550px;
+    gap: 250px;
 }
 
 h1 {
@@ -210,4 +210,11 @@ h2 {
 
 #theme:hover{
         background-color: rgb(255, 240, 221);
+}
+
+#timer{
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 0;
 }

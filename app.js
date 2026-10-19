@@ -13,6 +13,7 @@ const bodyElement = document.querySelector('#body')
 const h2Element = document.querySelector('#h2')
 const enterBtn = document.querySelector('#enter-btn')
 const deleteBtn = document.querySelector('#delete-btn')
+const timerElement = document.querySelector('#timer')
 
 const words = ['CLOCK', 'PAPER', 'BROWN', 'APPLE', 'BRAIN', 'CLOUD', 'BEACH', 'PLANE', 'WATER', 'HONEY', 'MONEY']
 let word
@@ -22,6 +23,7 @@ let guesses = []
 let indexGuess = 0
 let isDark = false
 let round = 0
+let time = 60
 function init() {
     homePage.style.display = 'flex'
     gamePage.style.display = 'none'
@@ -39,10 +41,13 @@ function gameDisplay() {
     indexGuess = 0
     messageElement.textContent = ''
     round = 0
+    time = 60
     for (let square of letterElements) {
         square.textContent = ''
         square.style.backgroundColor = ''
     }
+
+    startTimer()
 }
 
 function keyClick(event) {
@@ -53,11 +58,16 @@ function keyClick(event) {
     const key = event.target.textContent
 
     if (key !== 'Enter' && key !== '⌫') {
+        if(gameOver){
+            return
+        }
+        else{
         const currentRound = rowElements[round]
 
         currentRound.children[indexGuess].textContent = key
 
         indexGuess++
+        }
     }
 
     if (key === 'Enter') {
@@ -157,6 +167,7 @@ function changeTheme() {
         restartBtn.style.backgroundColor = 'rgb(92, 78, 62)'
         restartBtn.style.border = '2px solid rgb(221, 214, 197)'
         restartBtn.style.color = 'rgb(221, 214, 197)'
+        timerElement.style.color = 'rgb(221, 214, 197)'
 
         for (let i = 0; i < letterElements.length; i++) {
             letterElements[i].style.border = '2px solid rgb(221, 214, 197)'
@@ -186,6 +197,7 @@ function changeTheme() {
         restartBtn.style.backgroundColor = 'rgb(255, 247, 229)'
         restartBtn.style.border = '2px solid rgb(86, 79, 61)'
         restartBtn.style.color = 'rgb(86, 79, 61)'
+        timerElement.style.color = 'rgb(86, 79, 61)'
 
         for (let i = 0; i < letterElements.length; i++) {
             letterElements[i].style.border = '2px solid rgb(86, 79, 61)'
@@ -198,8 +210,22 @@ function changeTheme() {
             keyElements[i].style.color = 'rgb(86, 79, 61)'
         }
     }
+}
 
-
+function startTimer(){
+    const intervalId = setInterval(() => {
+        if(time === 0){
+            clearInterval(intervalId)
+            messageElement.textContent = `Game over! The word was ${word}`
+            gameOver = true
+            return
+        }
+        time--
+        timerElement.textContent = time
+        if(gameOver){
+            clearInterval(intervalId)
+        }
+    }, 1000)
 }
 
 init()
