@@ -8,6 +8,11 @@ const messageElement = document.querySelector('#message')
 const restartBtn = document.querySelector('#restart')
 const letterElements = document.querySelectorAll('.letter')
 const rowElements = document.querySelectorAll('.guess-row')
+const themeBtn = document.querySelector('#theme')
+const bodyElement = document.querySelector('#body')
+const h2Element = document.querySelector('#h2')
+const enterBtn = document.querySelector('#enter-btn')
+const deleteBtn = document.querySelector('#delete-btn')
 
 const words = ['CLOCK', 'PAPER', 'BROWN', 'APPLE', 'BRAIN', 'CLOUD', 'BEACH', 'PLANE', 'WATER', 'HONEY', 'MONEY']
 let word
@@ -15,7 +20,7 @@ let currentGuess = ''
 let gameOver
 let guesses = []
 let indexGuess = 0
-
+let isDark = false
 let round = 0
 function init() {
     homePage.style.display = 'flex'
@@ -38,7 +43,6 @@ function gameDisplay() {
         square.textContent = ''
         square.style.backgroundColor = ''
     }
-    console.log(word)
 }
 
 function keyClick(event) {
@@ -48,11 +52,8 @@ function keyClick(event) {
     }
     const key = event.target.textContent
 
-    console.log(key)
     if (key !== 'Enter' && key !== '⌫') {
         const currentRound = rowElements[round]
-
-        console.log(currentGuess)
 
         currentRound.children[indexGuess].textContent = key
 
@@ -75,7 +76,6 @@ function addLetter(letter) {
     if (currentGuess.length < 5 && !gameOver) {
         currentGuess = currentGuess + letter
     }
-    console.log(currentGuess)
 }
 
 function deleteLetter() {
@@ -83,8 +83,6 @@ function deleteLetter() {
         currentGuess = currentGuess.slice(0, -1)
         rowElements[round].children[currentGuess.length].textContent = ''
     }
-    console.log(currentGuess)
-
 }
 
 function enterGuess() {
@@ -123,17 +121,89 @@ function checkGuess() {
     for (let i = 0; i < 5; i++) {
         if (currentGuess[i] === word[i]) {
             letterElements[i + (round * 5)].style.backgroundColor = 'rgb(99, 210, 93)'
+            if (isDark) {
+                letterElements[i + (round * 5)].style.color = 'rgb(86, 79, 61)'
+            }
         }
         else if (word.includes(currentGuess[i])) {
             letterElements[i + (round * 5)].style.backgroundColor = 'rgb(255, 255, 145)'
+            if (isDark) {
+                letterElements[i + (round * 5)].style.color = 'rgb(86, 79, 61)'
+            }
         }
         else {
             letterElements[i + (round * 5)].style.backgroundColor = 'rgb(194, 194, 194)'
+            if (isDark) {
+                letterElements[i + (round * 5)].style.color = 'rgb(86, 79, 61)'
+            }
         }
     }
+}
+function changeTheme() {
+    if (!isDark) {
+        isDark = true
+        themeBtn.textContent = '🌙'
+        bodyElement.style.backgroundColor = 'rgb(64, 52, 39)'
+        themeBtn.style.backgroundColor = 'rgb(92, 78, 62)'
+        themeBtn.style.border = '2px solid rgb(221, 214, 197)'
+        messageElement.style.color = 'rgb(221, 214, 197)'
+        h2Element.style.color = 'rgb(221, 214, 197)'
+        enterBtn.style.backgroundColor = 'rgb(92, 78, 62)'
+        enterBtn.style.border = '2px solid rgb(221, 214, 197)'
+        enterBtn.style.color = 'rgb(221, 214, 197)'
+        deleteBtn.style.backgroundColor = 'rgb(92, 78, 62)'
+        deleteBtn.style.border = '2px solid rgb(221, 214, 197)'
+        deleteBtn.style.color = 'rgb(221, 214, 197)'
+        restartBtn.style.backgroundColor = 'rgb(92, 78, 62)'
+        restartBtn.style.border = '2px solid rgb(221, 214, 197)'
+        restartBtn.style.color = 'rgb(221, 214, 197)'
+
+        for (let i = 0; i < letterElements.length; i++) {
+            letterElements[i].style.border = '2px solid rgb(221, 214, 197)'
+            letterElements[i].style.color = 'rgb(221, 214, 197)'
+        }
+
+        for (let i = 0; i < keyElements.length; i++) {
+            keyElements[i].style.border = '2px solid rgb(221, 214, 197)'
+            keyElements[i].style.backgroundColor = 'rgb(86, 79, 61)'
+            keyElements[i].style.color = 'rgb(221, 214, 197)'
+        }
+    }
+    else {
+        isDark = false
+        themeBtn.textContent = '☀️'
+        bodyElement.style.backgroundColor = 'rgb(221, 214, 197)'
+        themeBtn.style.backgroundColor = 'rgb(255, 247, 229)'
+        themeBtn.style.border = '2px solid rgb(86, 79, 61)'
+        messageElement.style.color = 'rgb(86, 79, 61)'
+        h2Element.style.color = 'rgb(86, 79, 61)'
+        enterBtn.style.backgroundColor = 'rgb(255, 247, 229)'
+        enterBtn.style.border = '2px solid rgb(86, 79, 61)'
+        enterBtn.style.color = 'rgb(86, 79, 61)'
+        deleteBtn.style.backgroundColor = 'rgb(255, 247, 229)'
+        deleteBtn.style.border = '2px solid rgb(86, 79, 61)'
+        deleteBtn.style.color = 'rgb(86, 79, 61)'
+        restartBtn.style.backgroundColor = 'rgb(255, 247, 229)'
+        restartBtn.style.border = '2px solid rgb(86, 79, 61)'
+        restartBtn.style.color = 'rgb(86, 79, 61)'
+
+        for (let i = 0; i < letterElements.length; i++) {
+            letterElements[i].style.border = '2px solid rgb(86, 79, 61)'
+            letterElements[i].style.color = 'rgb(86, 79, 61)'
+        }
+
+        for (let i = 0; i < keyElements.length; i++) {
+            keyElements[i].style.border = '2px solid rgb(86, 79, 61)'
+            keyElements[i].style.backgroundColor = 'rgb(239, 226, 207)'
+            keyElements[i].style.color = 'rgb(86, 79, 61)'
+        }
+    }
+
+
 }
 
 init()
 playBtn.addEventListener('click', gameDisplay)
 keyboardElement.addEventListener('click', keyClick)
 restartBtn.addEventListener('click', gameDisplay)
+themeBtn.addEventListener('click', changeTheme)
