@@ -13,82 +13,83 @@ const words = ['CLOCK', 'PAPER', 'BROWN', 'APPLE', 'BRAIN', 'CLOUD', 'BEACH', 'P
 let word
 let currentGuess = ''
 let gameOver
-let guesses =[]
+let guesses = []
 let indexGuess = 0
 
 let round = 0
-function init(){
+function init() {
     homePage.style.display = 'flex'
     gamePage.style.display = 'none'
 }
 
-function gameDisplay(){
+function gameDisplay() {
     homePage.style.display = 'none'
     gamePage.style.display = 'flex'
 
     word = words[Math.floor(Math.random() * words.length)]
-    
+
     currentGuess = ''
     gameOver = false
     guesses = []
     indexGuess = 0
     messageElement.textContent = ''
+    round = 0
+    for (let square of letterElements) {
+        square.textContent = ''
+        square.style.backgroundColor = ''
+    }
     console.log(word)
 }
 
-function keyClick(event){
+function keyClick(event) {
 
-    if(!event.target.classList.contains('key') && event.target.tagName !== 'BUTTON'){
+    if (!event.target.classList.contains('key') && event.target.tagName !== 'BUTTON') {
         return
     }
- const key = event.target.textContent
+    const key = event.target.textContent
 
- console.log(key)
-    if(key !== 'Enter' && key !== '⌫'){
-    const currentRound = rowElements[round]
+    console.log(key)
+    if (key !== 'Enter' && key !== '⌫') {
+        const currentRound = rowElements[round]
 
-    console.log(currentGuess)
+        console.log(currentGuess)
 
-    currentRound.children[indexGuess].textContent = key
+        currentRound.children[indexGuess].textContent = key
 
-    indexGuess++
+        indexGuess++
     }
-   
 
-
-
-    if(key === 'Enter'){
+    if (key === 'Enter') {
         enterGuess()
-
     }
-    else if(key === '⌫'){
+    else if (key === '⌫') {
         deleteLetter()
         indexGuess--
     }
-    else{
+    else {
         addLetter(key)
     }
 }
 
-function addLetter(letter){
-    if(currentGuess.length < 5 && !gameOver){
+function addLetter(letter) {
+    if (currentGuess.length < 5 && !gameOver) {
         currentGuess = currentGuess + letter
     }
     console.log(currentGuess)
 }
 
-function deleteLetter(){
-    if(currentGuess.length > 0 && !gameOver){
+function deleteLetter() {
+    if (currentGuess.length > 0 && !gameOver) {
         currentGuess = currentGuess.slice(0, -1)
     }
 }
 
-function enterGuess(){
-    if(gameOver){
+function enterGuess() {
+    if (gameOver) {
         return
     }
 
-    if(currentGuess.length !== 5){
+    if (currentGuess.length !== 5) {
         messageElement.textContent = 'Enter 5 letters!'
         return
     }
@@ -98,7 +99,7 @@ function enterGuess(){
     messageElement.textContent = ''
     checkGuess()
 
-    if(guess === word){
+    if (guess === word) {
         messageElement.textContent = 'You Won!'
         gameOver = true
         currentGuess = ''
@@ -107,7 +108,7 @@ function enterGuess(){
 
     currentGuess = ''
 
-    if(guesses.length === 6){
+    if (guesses.length === 6) {
         messageElement.textContent = `Game over! The word was ${word}`
         gameOver = true
     }
@@ -115,16 +116,16 @@ function enterGuess(){
     indexGuess = 0
 }
 
-function checkGuess(){
-    for(let i=0; i<5; i++){
-        if(currentGuess[i] === word[i]){
+function checkGuess() {
+    for (let i = 0; i < 5; i++) {
+        if (currentGuess[i] === word[i]) {
             letterElements[i + (round * 5)].style.backgroundColor = 'rgb(92, 196, 87)'
         }
-        else if(word.includes(currentGuess[i])){
+        else if (word.includes(currentGuess[i])) {
             letterElements[i + (round * 5)].style.backgroundColor = 'rgb(255, 255, 145)'
         }
-        else{
-            letterElements[i+ (round * 5)].style.backgroundColor = 'rgb(194, 194, 194)'
+        else {
+            letterElements[i + (round * 5)].style.backgroundColor = 'rgb(194, 194, 194)'
         }
     }
 }
