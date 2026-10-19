@@ -81,7 +81,10 @@ function addLetter(letter) {
 function deleteLetter() {
     if (currentGuess.length > 0 && !gameOver) {
         currentGuess = currentGuess.slice(0, -1)
+        rowElements[round].children[currentGuess.length].textContent = ''
     }
+    console.log(currentGuess)
+
 }
 
 function enterGuess() {
@@ -119,7 +122,7 @@ function enterGuess() {
 function checkGuess() {
     for (let i = 0; i < 5; i++) {
         if (currentGuess[i] === word[i]) {
-            letterElements[i + (round * 5)].style.backgroundColor = 'rgb(92, 196, 87)'
+            letterElements[i + (round * 5)].style.backgroundColor = 'rgb(99, 210, 93)'
         }
         else if (word.includes(currentGuess[i])) {
             letterElements[i + (round * 5)].style.backgroundColor = 'rgb(255, 255, 145)'
