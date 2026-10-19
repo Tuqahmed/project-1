@@ -130,21 +130,27 @@ function enterGuess() {
 function checkGuess() {
     for (let i = 0; i < 5; i++) {
         if (currentGuess[i] === word[i]) {
+            if(!isDark){
             letterElements[i + (round * 5)].style.backgroundColor = 'rgb(99, 210, 93)'
-            if (isDark) {
-                letterElements[i + (round * 5)].style.color = 'rgb(86, 79, 61)'
+            }
+            else if(isDark){
+                letterElements[i + (round * 5)].style.backgroundColor = 'rgb(63, 144, 59)'
             }
         }
         else if (word.includes(currentGuess[i])) {
+            if(!isDark){
             letterElements[i + (round * 5)].style.backgroundColor = 'rgb(255, 255, 145)'
-            if (isDark) {
-                letterElements[i + (round * 5)].style.color = 'rgb(86, 79, 61)'
+            }
+            else if(isDark){
+                letterElements[i + (round * 5)].style.backgroundColor = 'rgb(197, 197, 64)'
             }
         }
         else {
+            if(!isDark){
             letterElements[i + (round * 5)].style.backgroundColor = 'rgb(194, 194, 194)'
-            if (isDark) {
-                letterElements[i + (round * 5)].style.color = 'rgb(86, 79, 61)'
+            }
+            else if(isDark){
+                letterElements[i + (round * 5)].style.backgroundColor = 'rgb(125, 124, 124)'
             }
         }
     }
