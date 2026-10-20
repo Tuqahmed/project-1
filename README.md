@@ -16,6 +16,10 @@ A game where you guess a 5-letter word in 6 tries before the 60-second timer run
 5. As a User, I want to see the squares change colors according to the accuracy 
 
 ## Screenshots
+![alt text](1.bmp)
+![alt text](2.bmp)
+![alt text](3.bmp)
+![alt text](4.bmp)
 
 ## Future Enhancements
 - Winning Streak

@@ -125,10 +125,6 @@ h2 {
     cursor: pointer;
 }
 
-.key:hover {
-    background-color: rgb(225, 213, 195);
-}
-
 #restart {
     align-self: center;
     width: 100px;
@@ -141,10 +137,6 @@ h2 {
     color: rgb(86, 79, 61);
     border: 2px solid rgb(86, 79, 61);
     margin: 0;
-}
-
-#restart:hover {
-    background-color: rgb(255, 240, 221);
 }
 
 #enter-btn {
@@ -163,10 +155,6 @@ h2 {
     font-size: 20px;
 }
 
-#enter-btn:hover {
-    background-color: rgb(255, 240, 221);
-}
-
 #delete-btn {
     width: 50px;
     height: 45px;
@@ -181,10 +169,6 @@ h2 {
     color: rgb(86, 79, 61);
     cursor: pointer;
     font-size: 20px;
-}
-
-#delete-btn:hover {
-    background-color: rgb(255, 240, 221);
 }
 
 #message {
@@ -206,10 +190,6 @@ h2 {
     border: 2px solid rgb(86, 79, 61);
     cursor: pointer;
     font-size: 20px;
-}
-
-#theme:hover{
-        background-color: rgb(255, 240, 221);
 }
 
 #timer{
