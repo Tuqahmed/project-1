@@ -25,4 +25,4 @@ A game where you guess a 5-letter word in 6 tries before the 60-second timer run
 - Adding sounds and animations
 
 ## Credits
--W3Schools
+- W3Schools

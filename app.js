@@ -142,7 +142,7 @@ function checkGuess() {
             letterElements[i + (round * 5)].style.backgroundColor = 'rgb(255, 255, 145)'
             }
             else if(isDark){
-                letterElements[i + (round * 5)].style.backgroundColor = 'rgb(197, 197, 64)'
+                letterElements[i + (round * 5)].style.backgroundColor = 'rgb(141, 141, 0)'
             }
         }
         else {
@@ -176,6 +176,15 @@ function changeTheme() {
         timerElement.style.color = 'rgb(221, 214, 197)'
 
         for (let i = 0; i < letterElements.length; i++) {
+            if(letterElements[i].style.backgroundColor === 'rgb(99, 210, 93)'){
+                letterElements[i].style.backgroundColor = 'rgb(63, 144, 59)'
+            }
+            else if(letterElements[i].style.backgroundColor === 'rgb(255, 255, 145)'){
+                letterElements[i].style.backgroundColor = 'rgb(141, 141, 0)'
+            }
+            else if(letterElements[i].style.backgroundColor === 'rgb(194, 194, 194)'){
+                letterElements[i].style.backgroundColor = 'rgb(125, 124, 124)'
+            }
             letterElements[i].style.border = '2px solid rgb(221, 214, 197)'
             letterElements[i].style.color = 'rgb(221, 214, 197)'
         }
@@ -206,6 +215,15 @@ function changeTheme() {
         timerElement.style.color = 'rgb(86, 79, 61)'
 
         for (let i = 0; i < letterElements.length; i++) {
+            if(letterElements[i].style.backgroundColor === 'rgb(63, 144, 59)'){
+                letterElements[i].style.backgroundColor = 'rgb(99, 210, 93)'
+            }
+            else if(letterElements[i].style.backgroundColor === 'rgb(141, 141, 0)'){
+                letterElements[i].style.backgroundColor = 'rgb(255, 255, 145)'
+            }
+            else if(letterElements[i].style.backgroundColor === 'rgb(125, 124, 124)'){
+                letterElements[i].style.backgroundColor = 'rgb(194, 194, 194)'
+            }
             letterElements[i].style.border = '2px solid rgb(86, 79, 61)'
             letterElements[i].style.color = 'rgb(86, 79, 61)'
         }
